@@ -13,25 +13,21 @@ namespace Clothes
 {
     public partial class frmMain : Form
     {
-
-        //private Form currentActiveForm = null;
-        //public string userName;
+        public static frmMain instence ;
 
         
-
-       public string userName;
-        public int phone;
         public frmMain()
         { 
             InitializeComponent();
+            instence = this;
         }
 
 
-        private void frmMain_Load(object sender, EventArgs e)
+        internal void frmMain_Load(string p1 , string p2)
         {
-
-         
-            //tton.ExpandAll();
+            pictureBox1.Show();
+            label2.Text = p1;
+            label3.Text = p2;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -75,6 +71,26 @@ namespace Clothes
            Form UserPro = new UserPro();
             UserPro.ShowDialog();
         UserPro.Close();
+        }
+
+        private void txtVal_TextChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void lbl1(object sender, EventArgs e)
+        {
+            //var y = Application.OpenForms["UserPro"] as UserPro;
+           // y.txtUser.Text = label.Text;
+        }
+
+        private void btnAddPic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = ofd.FileName;
+            }
         }
     }
 }

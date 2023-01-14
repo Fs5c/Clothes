@@ -16,28 +16,19 @@ namespace Clothes.GUL
 
     public partial class UserPro : Form
     {
-        public string userName;
-        public int phone;
-       
-
-        public string TextBox1 { get; private set; }
-
+       public static UserPro instence;
+        public System.Windows.Forms.TextBox tb1;
         public UserPro()
         {
 
             InitializeComponent();
-         
-          
+            instence = this;
+            tb1 = txtU;
         }
       
 
         private void btnAddPic_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                picUser.ImageLocation = ofd.FileName;
-            }
+        { 
         }
 
         private void UserPro_Load(object sender, EventArgs e)
@@ -65,11 +56,18 @@ namespace Clothes.GUL
 
         private void btnloign_Click(object sender, EventArgs e)
         {
-
-         
+            frmMain f = new frmMain();
             
-           
+          f.frmMain_Load(txtU.Text,txtPassword.Text);
+            f.Show();
+            // Close();
+        }
 
+
+
+        private void picUser_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }
